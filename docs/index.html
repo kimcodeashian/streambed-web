@@ -67,7 +67,7 @@
                   </a>
                 </h2>
                 
-                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                   <div class="card-body">
                     <li class="page-link-card"><a href="#open-account-streambed">Opening an account on Streambed</a></li>
                     <li class="page-link-card"><a href="#connect-streambed-zoom">Connecting your Streambed account to Zoom</a></li>
@@ -289,7 +289,7 @@
                     </button>
                   </a>
                 </h2>
-                <div id="collapseEleven" class="collapse show" aria-labelledby="headingEleven" data-parent="#accordionExample">
+                <div id="collapseEleven" class="collapse" aria-labelledby="headingEleven" data-parent="#accordionExample">
                   <div class="card-body">
                     <li class="page-link-card"><a href="#account-not-connect-yt">Account isn’t connecting to Youtube</a></li>
                     <li class="page-link-card"><a href="#account-no-upload-video">Account isn’t uploading videos</a></li>
@@ -308,7 +308,7 @@
       <!-- CONTENT CONTAINER -->
       <div class="col col-md-7 col-lg-8 docsPage tab-content">
         <!-- GETTING STARTED CONTENT -->
-        <div class="tab-pane" id="getting-started" role="tabpanel" aria-labelledby="getting-started-tab">
+        <div class="tab-pane active show" id="getting-started" role="tabpanel" aria-labelledby="getting-started-tab">
           <div class="docPage">
             <h1>Getting Started</h1>
             <section>
@@ -879,6 +879,9 @@
               <div class="kimNotes">
                 Do you want screenshots inputted?
               </div>
+              <div class="kimNotes">
+                Or more sublinks categories?
+              </div>
               <div class="definitions">
                 <h5>Insights</h5>
                 <p>On this tab the user will see a graphic representation of their impressions on each of their connected platforms over time.</p>
@@ -1381,7 +1384,7 @@
         </div>
 
         <!-- TROUBLESHOOTING CONTENT -->
-        <div class="tab-pane active show" id="troubleshooting" role="tabpanel" aria-labelledby="troubleshooting-tab">
+        <div class="tab-pane" id="troubleshooting" role="tabpanel" aria-labelledby="troubleshooting-tab">
           <div class="docPage">
             <h1>Troubleshooting</h1>
 
@@ -1563,22 +1566,22 @@
 
     $( "#uninstall-deactivate-link" ).click(function() {
       $('.tab-pane').attr('class','tab-pane')
-      $('#uninstall-deactivate').attr('class','tab-pane active show')
+      $('#uninstall-deactivate').attr('class','tab-pane active')
     });
 
     $( "#mnemonics-restoration-link" ).click(function() {
       $('.tab-pane').attr('class','tab-pane')
-      $('#mnemonics-restoration').attr('class','tab-pane active show')
+      $('#mnemonics-restoration').attr('class','tab-pane active')
     });
     
     $( "#faq-content-link" ).click(function() {
       $('.tab-pane').attr('class','tab-pane')
-      $('#faq-content').attr('class','tab-pane active show')
+      $('#faq-content').attr('class','tab-pane active')
     });
     
     $( "#troubleshooting-link" ).click(function() {
       $('.tab-pane').attr('class','tab-pane')
-      $('#troubleshooting').attr('class','tab-pane active show')
+      $('#troubleshooting').attr('class','tab-pane active')
     });
     // from ADEastwood
     $( ".back-to-top" ).click(function() {
