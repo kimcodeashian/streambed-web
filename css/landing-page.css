@@ -1,0 +1,458 @@
+/*!
+ * Start Bootstrap - Landing Page v5.0.7 (https://startbootstrap.com/template-overviews/landing-page)
+ * Copyright 2013-2019 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-landing-page/blob/master/LICENSE)
+ */
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+font-family: 'Montserrat', sans-serif;
+font-weight: 500;
+color:#707070;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Nunito', sans-serif;
+  font-weight:700;
+
+
+
+}
+
+.streamToggler{
+  border: none;
+  color: #0E62AF;
+}
+
+header.masthead {
+  position: relative;
+  background-color: #5BC3B2;
+  background: url("../img/heroFrame.png") no-repeat center center;
+  background-size: cover;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+header.masthead.streamAbout{
+  background: url("../img/about-bgBig.png") center center no-repeat;
+  background-size: cover;
+
+  
+}
+
+.aboutTitle{
+
+}
+
+@media(max-width: 500px){
+  header.masthead.streamAbout{
+    background-size: contain;
+background: url("../img/about-bg.png") center no-repeat;
+padding-top: 6rem;
+padding-bottom: 6rem;
+
+
+  }
+
+  .aboutTitle{
+    font-size: 1.5em !important;
+  }
+header.masthead .overlay {
+  position: absolute;
+  background-color: black;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+}
+
+}
+
+/*header.masthead .overlay {
+  position: absolute;
+  background-color: #0E62AF;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.3;
+}*/
+
+header.masthead h1 {
+  font-size: 2.5rem;
+}
+
+.navbar-brand img{
+  width: 214px;
+}
+
+.navbar{
+  /* background-color: #5BC3B2; */
+  background-image: linear-gradient(to right, #7BC0DE, #0099CD);
+}
+
+/* .nav{
+  background-color: #5BC3B2;
+} */
+
+nav .navbar-nav li a{
+  color: white !important;
+  letter-spacing: 1.6px;
+}
+
+.streamNavBar{
+padding-top: 1.2em;
+padding-bottom: 1.2em
+
+}
+
+.addSpace{
+  margin-top:1.5em;
+  margin-bottom: 0.5em;
+}
+
+.streamCardImg{
+  width:75%;
+  margin: 1em;
+}
+
+.centerContent{
+  vertical-align: middle;
+}
+
+.streamButton{
+  background-color: white;
+  border-radius: 22px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  opacity: 1;
+  border-style: none;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  letter-spacing: 0.1em;
+  color: #0099CD;
+}
+
+.streamButton:hover{
+  background: white 0% 0% no-repeat padding-box;
+  color: #0E62AF;
+}
+
+.heroButton{
+  background: white 0% 0% no-repeat padding-box;
+  color: #0E62AF;
+}
+
+.heroButton:hover{
+  background: #0E62AF 0% 0% no-repeat padding-box;
+  color: white;
+}
+
+@media (min-width: 768px) {
+  header.masthead {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+  header.masthead h1 {
+    font-size: 2rem;
+  }
+}
+
+
+
+
+.streamCardHeader{
+  color: #0E62AF;
+  text-align: left;
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+}
+
+.streamCardBody{
+  color: #707070;
+  text-align: left;
+}
+
+
+
+
+  .streamDeck{
+
+  } 
+
+.streamCard{
+  box-shadow: -3px 3px 6px #00000029;
+  border: 1px solid #707070;
+  border-radius: 20px;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+
+}
+
+.streamDeckSection{
+
+}
+
+.navbar-light .navbar-toggler-icon {
+  background-image: url("fas fa-bars");
+opacity: 1;
+}
+
+.nav-link{
+  margin-top: 0.2em;
+}
+
+.streamModal{
+  max-width: 700px;
+  
+
+}
+
+.streamModalTitle{
+  padding-top: 0.4em;
+  padding-bottom: 0em;
+}
+
+@media (max-width: 768px) { 
+
+  .nav-link{
+  margin-top:1em;
+}
+
+.streamButton{
+  margin-top:1em;
+}
+
+
+
+  .masthead{
+    padding-left:5%;
+    padding-right: 5%;
+  }
+
+.conditionsSection{
+padding-left:5%;
+padding-right: 5%;
+}
+
+.streamHeaderImg{
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top:10%;
+}
+
+.heroButton{
+width:100%;
+margin-top:1em;
+
+}
+
+.streamDeckSection{ 
+/*padding-left: 10%;
+padding-right: 10%;*/
+
+}
+
+/*.streamBodyTxt{
+  font-size: 0.9em;
+}*/
+
+.streamCardBody{
+  font-size: 0.9em;
+}
+
+.streamCard{
+
+
+}
+.streamDeck{
+display: inline-block;
+width: 80%;
+
+}
+
+.newsletterFont{
+  padding-top: 1em;
+}
+
+.newsletterButton{
+margin-left: 10%;
+margin-right: 10%;
+width:80%;
+margin-top:1em;
+
+}
+
+.newsletterFont{
+  margin-left: 10%;
+  margin-right: 10%;
+
+}
+
+.streamImageNews{
+  margin-left:20%;
+  margin-right:20%;
+  width: 60%;
+
+}
+
+footer.footer {
+  padding-left:5%;
+  padding-right: 5%;
+  }
+
+  .streamFooterTitle{
+    margin-top:1.5em;
+  }
+}
+
+.showcase .showcase-text {
+  padding: 3rem;
+}
+
+.showcase .showcase-img {
+  min-height: 30rem;
+  background-size: cover;
+}
+
+@media (min-width: 768px) {
+  .showcase .showcase-text {
+    padding: 7rem;
+  }
+}
+
+.features-icons {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+.features-icons .features-icons-item {
+  max-width: 20rem;
+}
+
+.features-icons .features-icons-item .features-icons-icon {
+  height: 7rem;
+}
+
+.features-icons .features-icons-item .features-icons-icon i {
+  font-size: 4.5rem;
+}
+
+.features-icons .features-icons-item:hover .features-icons-icon i {
+  font-size: 5rem;
+}
+
+.testimonials {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+.testimonials .testimonial-item {
+  max-width: 18rem;
+}
+
+.testimonials .testimonial-item img {
+  max-width: 12rem;
+  box-shadow: 0px 5px 5px 0px #adb5bd;
+}
+
+.call-to-action {
+  position: relative;
+  background-size: cover;
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+  background: #E6E7E8;
+}
+
+.newsletterButton{
+  padding-left: 2.5em;
+  padding-right: 2.5em;
+}
+
+.newsletterFont{
+  color:#0E62AF;
+  text-align: left;
+}
+
+.bg-StreamBlue{
+  background-color: #0E62AF;
+}
+
+.streamBlue{
+  color:#0E62AF;
+}
+
+.streamPurple{
+  color:#962686;
+
+}
+
+.grey-bg{
+  background: #E6E7E8 0% 0% no-repeat padding-box;
+}
+
+.staffPicture{
+  width: 90%;
+
+}
+
+@media(max-width: 768px){
+  .staffPicture{
+    width: 186px !important;
+  }
+}
+.streamPurpleHighlight{
+  background-color: #96268620;
+  padding-right: 0.1em;
+  padding-left: 0.1em;
+}
+
+.streamForm{
+
+  padding-top: 5em;
+  padding-bottom: 5em;
+}
+
+@media(max-width:768px){
+  .streamForm{
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+}
+
+footer.footer {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.streamFooterList{
+  font-size: 0.8em;
+  letter-spacing: 0.1em;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  padding-bottom: 1em;
+}
+
+.streamFab{
+  color: white;
+}
+
+.streamSocials{
+  color: #BEBEBE;
+}
+
+.streamSocials:hover, focus{
+  color: #0E62AF;
+}

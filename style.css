@@ -1,0 +1,13 @@
+/*
+Theme Name: ColorMag Child Theme
+Description: A child of the colorgrill theme
+Author: Maren Thompson 
+Template: colormag
+Version: 1.0.0
+*/
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+	font-weight: bold;
+font-family: Nunito, sans-serif;
+}

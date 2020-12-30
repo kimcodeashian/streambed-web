@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <script src="/vendor/jquery/jquery.min.js"></script>
+
+    <title>Streambed Media - Indexing Page</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    <script src="main.js"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Custom fonts for this template -->
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" />
+    <link
+      href="/vendor/simple-line-icons/css/simple-line-icons.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Nunito:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Custom styles for this template -->
+    <link href="/css/landing-page.css" rel="stylesheet" />
+    <link href="/css/content-page.css" rel="stylesheet" />
+    <link href="/css/creater_page.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-dark navbar-expand-lg sticky-top streamNavBar">
+      <div class="container">
+        <a class="navbar-brand" href="#" style="background-color: transparent"
+          ><img src="/img/logo.svg" alt="Streambed Logo"
+        /></a>
+        <button
+          class="navbar-toggler streamToggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarItems"
+          aria-controls="navbarItems"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon">
+            <i class="fas fa-bars" style="color: #fff; font-size: 1.5em"></i>
+          </span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarItems">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link ml-md-5" href="/index"
+                >Home<span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link ml-md-5" href="/about">About</a>
+            </li>
+          </ul>
+          <a
+            class="btn btn-primary streamButton streamTransparent"
+            href="/subscribe"
+            >SUBSCRIBE</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Creater Page Start -->
+    <section class="creater-wrap">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9 mb-3">
+            <div class="creater_box">
+              <div class="creater_head">
+                <div class="user_info">
+                  <h2 id="user_name" class="name_user">Sean Cullen</h2>
+                  <span id="user_name_handle" class="user_name"
+                    >@Sean_Cullen</span
+                  >
+                  <span id="member_since" class="user_since">
+                    User Since: June 20, 2020
+                  </span>
+                </div>
+                <div class="user_avater">
+                  <i class="fas fa-user-circle fa-7x streamGrey"></i>
+                </div>
+              </div>
+              <div class="user_about">
+                <h5>About</h5>
+                <p id="user-about">
+                  Sean Cullen is an amateur bike rider and overall sport
+                  enthusiast with an affinity for well-timed sarcasm and a pithy
+                  wit. Sponsored by Cannondale Bikes and DAZN.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <div class="creater_box box_sm text-center">
+              <div class="score_wrap">
+                <img src="./img/reverb-score-big.svg" />
+                <span>Reverb Score</span>
+                <h1>5,600</h1>
+              </div>
+              <div class="social">
+                <a href="#" class="y-tube">
+                  <img src="./img/youtube-icon.svg" />
+                </a>
+                <a href="#" class="twitter">
+                  <img src="./img/twitter-icon.svg" />
+                </a>
+              </div>
+              <p class="linked-account-title">
+                <span id="user_name_acc"></span>
+                <span>Linked Accounts</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- row end -->
+
+        <div class="row">
+          <div class="col-md-9">
+            <div class="creater_box mb-3">
+              <div class="content-stream-header">
+                <h2>Content Stream</h2>
+                <div class="row">
+                  <div class="col-md-5">
+                    <div class="form-group">
+                      <input
+                        type="search"
+                        class="form-control search"
+                        placeholder="Search"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-5 offset-md-2">
+                    <div class="form-group">
+                      <select class="form-control">
+                        <option>Select Platform Filters</option>
+                        <option>youtube</option>
+                        <option>twitter</option>
+                        <option>instagram</option>
+                        <option></option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Head End -->
+
+              <div class="accordion-wrap">
+                <div class="accordion" id="creatorAccordion">
+                  <div id="card" class="card"></div>
+                  <!-- First Card End -->
+                </div>
+              </div>
+            </div>
+            <!-- End -->
+
+            <div class="creater_box">
+              <!-- TODO -->
+              <h2>Top 6 Affiliations</h2>
+              <div id="top-affiliation" class="row"></div>
+            </div>
+            <!-- End -->
+
+            <div class="more_sec">
+              <h4>Want to know more?</h4>
+              <p>
+                By clicking below, you will be taken to a page that shows you
+                proof of record on the blockchain.
+              </p>
+              <p>Want to know more about this? <a href="#"> Click here</a>.</p>
+              <a href="#" class="btn btn-outline-primary">Here’s the proof</a>
+            </div>
+            <a href="#" class="btn btn-primary">Sign In to see more</a>
+          </div>
+          <!-- Col End -->
+
+          <div class="col-md-3">
+            <div class="creater_box box_sm h-auto text-center mb-3">
+              <div class="sharing-box-title">
+                Want to post this video on your channels?
+              </div>
+              <div class="sharing-box-content">
+                <p>
+                  creator says you can! All you have to do is create a Streambed
+                  account (it’s free!) and post to your favourite social media
+                  channels.
+                </p>
+                <p>
+                  Once you post, we’ll let the original creator and
+                  collaborators know.
+                </p>
+                <p>Happy sharing!</p>
+              </div>
+              <a class="sharing-btn-container" href="#">Start Sharing</a>
+            </div>
+            <div class="creater_box box_sm h-auto">
+              <div class="faq-about-app">
+                <a href="#" class="about-app-ques">What is this app?</a>
+                <a href="#" class="about-app-ques">Something missing?</a>
+                <a href="#" class="about-app-ques">Is it you in this video?</a>
+                <a href="#" class="about-app-ques">Sign up to see more</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Creater Page End -->
+
+    <!-- Footer -->
+    <footer class="footer bg-StreamGreen">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5">
+            <img
+              class="mb-2 logo-footer"
+              src="/img/logo.svg"
+              alt="Streambed logo"
+            />
+            <p class="text-white">Peterborough | New York</p>
+          </div>
+          <div class="col-md-2">
+            <h5 class="text-white streamFooterTitle">COMPANY</h5>
+            <div class="list-group">
+              <a href="/index" class="text-white streamFooterList">HOME</a>
+              <a href="/about" class="text-white streamFooterList">ABOUT</a>
+              <a href="/subscribe" class="text-white streamFooterList"
+                >SUBSCRIBE</a
+              >
+            </div>
+          </div>
+
+          <div class="col-md-2">
+            <h5 class="text-white streamFooterTitle">LEGAL</h5>
+            <div class="list-group">
+              <a href="/terms" class="text-white streamFooterList"
+                >TERMS OF SERVICE</a
+              >
+              <a href="/privacy" class="text-white streamFooterList">PRIVACY</a>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <h5 class="text-white streamFooterTitle">FOLLOW US</h5>
+            <ul class="list-inline mb-0">
+              <li class="list-inline-item mr-2">
+                <a href="https://www.facebook.com/thestreambed" target="_blank">
+                  <i class="fab fa-facebook-square fa-2x fa-fw streamFab"></i>
+                </a>
+              </li>
+              <li class="list-inline-item mr-2">
+                <a href="http://twitter.com/streambedmedia" target="_blank">
+                  <i class="fab fa-twitter-square fa-2x fa-fw streamFab"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a
+                  href="http://www.instagram.com/streambedmedia"
+                  target="_blank"
+                >
+                  <i class="fab fa-instagram fa-2x fa-fw streamFab"></i>
+                </a>
+              </li>
+            </ul>
+            <p class="text-white mt-2">INFO@STREAMBEDMEDIA.COM</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <p class="text-white small mb-4 mb-lg-0 mt-3">
+              &copy; All rights Reserved Streambed Media Inc 2020
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Bootstrap core JavaScript -->
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      function goTosignupPage() {
+        document.location.replace("https://app.streambedmedia.com/signup");
+      }
+
+      $(document).ready(function () {
+        var url = document.location.href;
+        console.log(url);
+
+        let searchParams = new URLSearchParams(window.location.search);
+        const user = searchParams.get("user");
+
+        let get_user = `http://localhost:5000/users/get-create-user/${user}`;
+        fetch(get_user)
+          .then((resp) => resp.json())
+          .then(function (data) {
+            console.log(data);
+
+            const { collaborated, ownVideo, user } = data;
+
+            let coll_ui = "";
+
+            collaborated.forEach((item) => {
+              const _coll = item.collaborators.filter(
+                (coll) => coll.user === searchParams.get("user")
+              );
+
+              coll_ui =
+                coll_ui +
+                `<div class="col-md-4 mb-3">
+                  <div class="affiliation_box">
+                    <div>
+                      <i class="fas fa-user-circle fa-7x streamGrey"></i>
+                    </div>
+                    <span class="name">${_coll[0].user}</span>
+                    <span class="role">${_coll[0].role}</span>
+                    <span class="verification">${
+                      _coll[0].verified ? "Verified" : "Unverified"
+                    }</span>
+                  </div>
+                </div>`;
+            });
+
+            $("#top-affiliation").append(coll_ui);
+
+            let _ownVideo = {};
+
+            ownVideo.forEach((item) => {
+              let year = item.createdAt.split("-")[0];
+              if (!_ownVideo[year]) {
+                _ownVideo[year] = [];
+              }
+
+              _ownVideo[year].push(item);
+            });
+
+            for (video in _ownVideo) {
+              $("#card").append(
+                `<div class="card-header" id="${video}">
+                  <button
+                        class="btn btn-link collapsed"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#collapse-${video}"
+                        aria-expanded="false"
+                        aria-controls="collapse-${video}"
+                      >
+                      ${video}
+                      </button></div>
+
+                      <div
+                      id="collapse-${video}"
+                      class="collapse"
+                      aria-labelledby="${video}"
+                      data-parent="#creatorAccordion"
+                    ></div>`
+              );
+              _ownVideo[video].forEach((item, i) => {
+                let collaborators = "";
+                item.collaborators.forEach((coll) => {
+                  console.log("coll", coll);
+                  collaborators =
+                    collaborators +
+                    `<div class="col-md-5">
+                                  <div class="shadow_box">
+                                    <div class="card-user">
+                                      <i
+                                        class="fas fa-user-circle fa-2x streamGrey"
+                                      ></i>
+                                      ${
+                                        coll.verified
+                                          ? '<i class="fas fa-check-circle"></i>'
+                                          : '<i class="fas fa-times-circle"></i>'
+                                      }
+
+
+                                    </div>
+                                    <div class="card-user-details">
+                                      <span class="name">${coll.user}</span>
+                                      <span class="role"
+                                        ><i class="fas fa-tags"></i>
+                                        ${coll.role}</span
+                                      >
+                                      
+                                      ${
+                                        coll.verified
+                                          ? `<span class="varification">Verified</span>`
+                                          : `<span class="varification unverified">Unverified</span>`
+                                      }
+                                    </div>
+                                  </div>
+                                </div>`;
+                });
+                console.log("collaborators", collaborators);
+                $(`#collapse-${video}`).append(`
+
+                      <div class="card-body">
+                        <div class="card-wrap">
+                          <div class="row no-gutters">
+                            <div class="col-md-4">
+                              <div class="post_thumbnail">
+                                <img
+                                  alt="image"
+                                  src="https://i.ytimg.com/vi/${
+                                    item.videoId
+                                  }/default.jpg"
+                                />
+                                <span>{00:01:05}</span>
+                              </div>
+                            </div>
+                            <div class="col-md-8 pl-md-2">
+                              <div class="post_info">
+                                <h2>
+                                  ${item.title}
+
+                                </h2>
+                                <div
+                                  class="d-flex justify-content-between social-p"
+                                >
+                                  <div class="social-post">
+                                    <img
+                                      alt="image"
+                                      src="./img/youtube-icon.svg"
+                                    />
+                                    <span>YouTube</span>
+                                  </div>
+                                  <span> ${new Date(item.createdAt)
+                                    .toString()
+                                    .slice(4, 15)} </span>
+                                </div>
+                              </div>
+                              <div class="row no-gutters shadow_row mt-2">
+
+                                ${collaborators}
+                                <div class="col-md-2">
+                                  <div class="shadow_box">
+                                    <a href="#" class="see_more">See more</a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+
+                    </div>
+                    `);
+              });
+            }
+
+            // $("#flo-link").attr(
+            //   "href",
+            //   "http://network.flo.cash/tx/" + userDoc.txid
+            // );
+
+            console.log("user.displayName", user.displayName);
+
+            $("#user_name").text(user.displayName);
+            $("#user_name_acc").text(user.displayName);
+            $("#user_name_handle").text(`@${user.displayName}`);
+            let _member_since = new Date(user.memberSince).toDateString();
+            // $("#member_since").text(
+            //   `User Since: ${user.memberSince.split("T")[0]}`
+            // );
+            $("#member_since").text(
+              `User Since: ${_member_since.substr(3, _member_since.length)}`
+            );
+
+            $("#user-about").text(user.about || "---");
+            console.log("date", _member_since.substr(3, _member_since.length));
+
+            // if (userDoc.userId.memberSince) {
+            //   $("#memberSince").append(
+            //     userDoc.userId.memberSince.split("T")[0]
+            //   );
+            // } else {
+            //   $("#userSince").remove();
+            // }
+
+            // $(".videoInfoSection h2").append(userDoc.title);
+            // $(".videoInfoSection .videoDetails .date").append(
+            //   new Date(userDoc.createdAt).toDateString()
+            // );
+
+            // var v_path = `https://app.streambedmedia.com/uploads/${userDoc.userId._id}/${userDoc.vid}/${video}`;
+            // $(".videoPlaceholderSmall video").html(
+            //   `<source src=${`https://app.streambedmedia.com/uploads/${userDoc.userId._id}/${userDoc.vid}/${video}`} type="video/mp4"></source>`
+            // );
+            // $(".videoPlaceholderSmall #video-src")[0].load();
+
+            // $(".activity-row").remove();
+
+            // collab.sort(function (a, b) {
+            //   return b.isVerified - a.isVerified;
+            // });
+            // if (collab && collab.length > 0) $("#nothing-text").remove();
+            // $.each(collab, function (index, collaborator) {
+            //   var name = collaborator.user;
+
+            //   var className = collaborator.verified
+            //     ? "streamGreen"
+            //     : "streamPurple";
+            //   var status = collaborator.verified ? "Verified" : "Unverified";
+            //   var icon = collaborator.verified
+            //     ? "fa-check-circle"
+            //     : "fa-times-circle";
+
+            //   $("#collaborator-slider").append(
+            //     '<div class="item"><div class="d-flex flex-column justify-content-center"> <div class="position-relative"> <i class="fas fa-user-circle fa-5x text-center mb-0 streamGrey" ></i ><i class="fas text-right ' +
+            //       icon +
+            //       " fa-lg " +
+            //       className +
+            //       ' checkIcon" ></i> </div> <h5 class="streamGreen text-center mt-2 mb-1">' +
+            //       name +
+            //       '</h5> <p class="streamGrey text-center">' +
+            //       collaborator.role +
+            //       '</p> <p class="' +
+            //       className +
+            //       ' text-center">' +
+            //       status +
+            //       "</p></div></div>"
+            //   );
+            // });
+            ResCarouselSize();
+          });
+
+        var itemsMainDiv = ".MultiCarousel";
+        var itemsDiv = ".MultiCarousel-inner";
+        var itemWidth = "";
+
+        $(".leftLst, .rightLst").click(function () {
+          var condition = $(this).hasClass("leftLst");
+          if (condition) click(0, this);
+          else click(1, this);
+        });
+
+        ResCarouselSize();
+
+        $(window).resize(function () {
+          ResCarouselSize();
+        });
+
+        //this function define the size of the items
+        function ResCarouselSize() {
+          var incno = 0;
+          var dataItems = "data-items";
+          var itemClass = ".item";
+          var id = 0;
+          var btnParentSb = "";
+          var itemsSplit = "";
+          var sampwidth = $(itemsMainDiv).width();
+          var bodyWidth = $("body").width();
+          $(itemsDiv).each(function () {
+            id = id + 1;
+            var itemNumbers = $(this).find(itemClass).length;
+            btnParentSb = $(this).parent().attr(dataItems);
+            itemsSplit = btnParentSb.split(",");
+            $(this)
+              .parent()
+              .attr("id", "MultiCarousel" + id);
+
+            itemWidth = 280;
+
+            $(this).css({
+              transform: "translateX(0px)",
+              width: itemWidth * itemNumbers,
+            });
+            $(this)
+              .find(itemClass)
+              .each(function () {
+                $(this).outerWidth(itemWidth);
+              });
+
+            $(".leftLst").addClass("over");
+            $(".rightLst").removeClass("over");
+          });
+        }
+
+        //this function used to move the items
+        function ResCarousel(e, el, s) {
+          var leftBtn = ".leftLst";
+          var rightBtn = ".rightLst";
+          var translateXval = "";
+          var divStyle = $(el + " " + itemsDiv).css("transform");
+          var values = divStyle.match(/-?[\d\.]+/g);
+          var xds = Math.abs(values[4]);
+          if (e == 0) {
+            translateXval = parseInt(xds) - parseInt(itemWidth * s);
+            $(el + " " + rightBtn).removeClass("over");
+
+            if (translateXval <= itemWidth / 2) {
+              translateXval = 0;
+              $(el + " " + leftBtn).addClass("over");
+            }
+          } else if (e == 1) {
+            var itemsCondition = $(el).find(itemsDiv).width() - $(el).width();
+            translateXval = parseInt(xds) + parseInt(itemWidth * s);
+            $(el + " " + leftBtn).removeClass("over");
+
+            if (translateXval >= itemsCondition - itemWidth / 2) {
+              translateXval = itemsCondition;
+              $(el + " " + rightBtn).addClass("over");
+            }
+          }
+          $(el + " " + itemsDiv).css(
+            "transform",
+            "translateX(" + -translateXval + "px)"
+          );
+        }
+
+        //It is used to get some elements from btn
+        function click(ell, ee) {
+          var Parent = "#" + $(ee).parent().attr("id");
+          var slide = $(Parent).attr("data-slide");
+          ResCarousel(ell, Parent, slide);
+        }
+      });
+    </script>
+  </body>
+</html>

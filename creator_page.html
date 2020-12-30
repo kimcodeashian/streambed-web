@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <script src="/vendor/jquery/jquery.min.js"></script>
+
+    <title>Streambed Media - Indexing Page</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    <script src="main.js"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Custom fonts for this template -->
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" />
+    <link
+      href="/vendor/simple-line-icons/css/simple-line-icons.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Nunito:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Custom styles for this template -->
+    <link href="/css/landing-page.css" rel="stylesheet" />
+    <link href="/css/content-page.css" rel="stylesheet" />
+    <link href="/css/creater_page.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-dark navbar-expand-lg sticky-top streamNavBar">
+      <div class="container">
+        <a class="navbar-brand" href="#" style="background-color: transparent"
+          ><img src="/img/logo.svg" alt="Streambed Logo"
+        /></a>
+        <button
+          class="navbar-toggler streamToggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarItems"
+          aria-controls="navbarItems"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon">
+            <i class="fas fa-bars" style="color: #fff; font-size: 1.5em"></i>
+          </span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarItems">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link ml-md-5" href="/index"
+                >Home<span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link ml-md-5" href="/about">About</a>
+            </li>
+          </ul>
+          <a
+            class="btn btn-primary streamButton streamTransparent"
+            href="/subscribe"
+            >SUBSCRIBE</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Creater Page Start -->
+    <section class="creater-wrap">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9 mb-3">
+            <div class="creater_box">
+              <div class="creater_head">
+                <div class="user_info">
+                  <h2 id="user_name" class="name_user">Sean Cullen</h2>
+                  <span id="user_name_handle" class="user_name"
+                    >@Sean_Cullen</span
+                  >
+                  <span id="member_since" class="user_since">
+                    User Since: June 20, 2020
+                  </span>
+                </div>
+                <div class="user_avater">
+                  <i class="fas fa-user-circle fa-7x streamGrey"></i>
+                </div>
+              </div>
+              <div class="user_about">
+                <h5>About</h5>
+                <p id="user-about">
+                  Sean Cullen is an amateur bike rider and overall sport
+                  enthusiast with an affinity for well-timed sarcasm and a pithy
+                  wit. Sponsored by Cannondale Bikes and DAZN.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <div class="creater_box box_sm text-center">
+              <div class="score_wrap">
+                <img src="./img/reverb-score-big.svg" />
+                <span>Reverb Score</span>
+                <h1>5,600</h1>
+              </div>
+              <div id="social-platform" class="social">
+                <!-- <a href="#" class="y-tube">
+                  <img src="./img/youtube-icon.svg" />
+                </a>
+                <a href="#" class="twitter">
+                  <img src="./img/twitter-icon.svg" />
+                </a> -->
+              </div>
+              <p class="linked-account-title">
+                <span id="user_name_acc"></span>
+                <span>Linked Accounts</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- row end -->
+
+        <div class="row">
+          <div class="col-md-9">
+            <div class="creater_box mb-3">
+              <div class="content-stream-header">
+                <h2>Content Stream</h2>
+                <div class="row">
+                  <div class="col-md-5">
+                    <div class="form-group">
+                      <input
+                        id="filter-post"
+                        type="search"
+                        class="form-control search"
+                        placeholder="Search"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-5 offset-md-2">
+                    <div class="form-group">
+                      <select id="plateform-filter" class="form-control">
+                        <option value="">Select Platform Filters</option>
+                        <option value="youtube">youtube</option>
+                        <option value="twitter">twitter</option>
+                        <option value="facebook">facebook</option>
+                        <option value="instagram">instagram</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Head End -->
+
+              <div class="accordion-wrap">
+                <div class="accordion" id="creatorAccordion">
+                  <!-- API COTENT -->
+                  <div id="card" class="card"></div>
+                  <!-- First Card End -->
+                </div>
+              </div>
+            </div>
+            <!-- End -->
+
+            <div class="creater_box">
+              <!-- TODO -->
+              <h2
+                id="top-affilication-count"
+                class="top-affilication-count"
+              ></h2>
+              <div id="top-affiliation" class="row"></div>
+            </div>
+            <!-- End -->
+
+            <div class="more_sec">
+              <h4>Want to know more?</h4>
+              <p>
+                By clicking below, you will be taken to a page that shows you
+                proof of record on the blockchain.
+              </p>
+              <p>Want to know more about this? <a href="#"> Click here</a>.</p>
+              <a
+                href="http://network.flo.cash/"
+                +
+                target="_blank"
+                class="btn btn-outline-primary"
+                >Here’s the proof</a
+              >
+            </div>
+            <a
+              href="https://app.streambedmedia.com/signup"
+              class="btn btn-primary"
+              >Sign In to see more</a
+            >
+          </div>
+          <!-- Col End -->
+
+          <div class="col-md-3">
+            <div class="creater_box box_sm h-auto text-center mb-3">
+              <div class="sharing-box-title">
+                Want to post this video on your channels?
+              </div>
+              <div class="sharing-box-content">
+                <p>
+                  creator says you can! All you have to do is create a Streambed
+                  account (it’s free!) and post to your favourite social media
+                  channels.
+                </p>
+                <p>
+                  Once you post, we’ll let the original creator and
+                  collaborators know.
+                </p>
+                <p>Happy sharing!</p>
+              </div>
+              <a class="sharing-btn-container" href="#">Start Sharing</a>
+            </div>
+            <div class="creater_box box_sm h-auto">
+              <div class="faq-about-app">
+                <a href="#" class="about-app-ques">What is this app?</a>
+                <a href="#" class="about-app-ques">Something missing?</a>
+                <a href="#" class="about-app-ques">Is it you in this video?</a>
+                <a
+                  href="https://app.streambedmedia.com/signup"
+                  class="about-app-ques"
+                  >Sign up to see more</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Creater Page End -->
+
+    <!-- Footer -->
+    <footer class="footer bg-StreamGreen">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5">
+            <img
+              class="mb-2 logo-footer"
+              src="/img/logo.svg"
+              alt="Streambed logo"
+            />
+            <p class="text-white">Peterborough | New York</p>
+          </div>
+          <div class="col-md-2">
+            <h5 class="text-white streamFooterTitle">COMPANY</h5>
+            <div class="list-group">
+              <a href="/index" class="text-white streamFooterList">HOME</a>
+              <a href="/about" class="text-white streamFooterList">ABOUT</a>
+              <a href="/subscribe" class="text-white streamFooterList"
+                >SUBSCRIBE</a
+              >
+            </div>
+          </div>
+
+          <div class="col-md-2">
+            <h5 class="text-white streamFooterTitle">LEGAL</h5>
+            <div class="list-group">
+              <a href="/terms" class="text-white streamFooterList"
+                >TERMS OF SERVICE</a
+              >
+              <a href="/privacy" class="text-white streamFooterList">PRIVACY</a>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <h5 class="text-white streamFooterTitle">FOLLOW US</h5>
+            <ul class="list-inline mb-0">
+              <li class="list-inline-item mr-2">
+                <a href="https://www.facebook.com/thestreambed" target="_blank">
+                  <i class="fab fa-facebook-square fa-2x fa-fw streamFab"></i>
+                </a>
+              </li>
+              <li class="list-inline-item mr-2">
+                <a href="http://twitter.com/streambedmedia" target="_blank">
+                  <i class="fab fa-twitter-square fa-2x fa-fw streamFab"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a
+                  href="http://www.instagram.com/streambedmedia"
+                  target="_blank"
+                >
+                  <i class="fab fa-instagram fa-2x fa-fw streamFab"></i>
+                </a>
+              </li>
+            </ul>
+            <p class="text-white mt-2">INFO@STREAMBEDMEDIA.COM</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <p class="text-white small mb-4 mb-lg-0 mt-3">
+              &copy; All rights Reserved Streambed Media Inc 2020
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Bootstrap core JavaScript -->
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      function goTosignupPage() {
+        document.location.replace("https://app.streambedmedia.com/signup");
+      }
+
+      $(document).ready(function () {
+        var url = document.location.href;
+
+        let searchParams = new URLSearchParams(window.location.search);
+        const user = searchParams.get("user");
+        let BASE_URL = "";
+        // BASE_URL = document.referrer;
+
+        // console.log("url", BASE_URL, url);
+        // if (!BASE_URL) {
+        BASE_URL = "https://app.streambedmedia.com";
+        // BASE_URL = "https://test.streambedmedia.com";
+        // BASE_URL = "http://localhost:5000";
+        // BASE_URL = "http://localhost:4000";
+        // }
+
+        let get_user = `${BASE_URL}/users/get-create-user/${user}`;
+        fetch(get_user)
+          .then((resp) => resp.json())
+          .then(function (data) {
+            try {
+              const {
+                collaborated,
+                ownVideo,
+                user,
+                twitter,
+                facebook,
+                instagram,
+              } = data;
+
+              // const { displayName } = user;
+
+              var _platform = "";
+
+              if (user.youtube) {
+                _platform = ` <a href="#" class="y-tube">
+                        <img src="./img/youtube-icon.svg" />
+                      </a>`;
+              }
+
+              if (user.twitter) {
+                _platform =
+                  _platform +
+                  `<a href="#" class="twitter">
+                        <img src="./img/twitter-icon.svg" />
+                      </a>`;
+              }
+
+              $("#social-platform").append(_platform);
+
+              // <div id="social-platform" class="social">
+              // <a href="#" class="y-tube">
+              //   <img src="./img/youtube-icon.svg" />
+              // </a>
+              // <a href="#" class="twitter">
+              //   <img src="./img/twitter-icon.svg" />
+              // </a>
+              //   </div>
+
+              $("#top-affilication-count").text(
+                `Top ${collaborated.length}  Affiliations`
+              );
+              let coll_ui = "";
+              collaborated.forEach((item) => {
+                const _coll = item.collaborators.filter(
+                  (coll) => coll.email === searchParams.get("user")
+                );
+
+                var linkTo = `v_id=${decodeURI(item.videoId)}`;
+                if (item.videoId) {
+                  linkTo = `v_id=${decodeURI(item.videoId)}`;
+                } else if (item.post_id) {
+                  linkTo = `facebook_post=${decodeURI(item.post_id)}&txid=${
+                    item.txid
+                  }`;
+                }
+
+                if (_coll.length) {
+                  coll_ui =
+                    coll_ui +
+                    `<div class="col-md-4 mb-3">
+                          <div class="affiliation_box activity_box_new">
+                            <a href=/content.html?${linkTo} class="activity_link_new"></a>
+                            <div>
+                              <i class="fas fa-user-circle fa-7x streamGrey"></i>
+                            </div>
+                            <span class="name">${_coll[0].user}</span>
+                            <span class="role">${_coll[0].role}</span>
+                            <span class="verification">${
+                              _coll[0].verified ? "Verified" : "Unverified"
+                            }</span>
+                          </div>
+                        </div>`;
+                }
+              });
+
+              $("#top-affiliation").append(coll_ui);
+
+              // first updated datasctructure
+
+              let _ownVideo = {};
+              let _ownTweet = {};
+              let _facebookPost = {};
+              let _instagramPost = {};
+
+              l = 0;
+
+              ownVideo.forEach((item) => {
+                let year = item.createdAt.split("-")[0] + "_year";
+                if (!_ownVideo[year]) {
+                  _ownVideo[year] = [];
+                }
+                _ownVideo[year].push(item);
+              });
+
+              let temp_video = {};
+
+              Object.keys(_ownVideo)
+                .sort((a, b) => {
+                  return b.split("_")[0] - a.split("_")[0];
+                })
+                .forEach(function (key) {
+                  temp_video[key] = _ownVideo[key];
+                });
+              _ownVideo = temp_video;
+
+              if (twitter) {
+                twitter.forEach((tweet) => {
+                  let year = tweet.createdAt.split("-")[0] + "_year";
+                  if (!_ownTweet[year]) {
+                    _ownTweet[year] = [];
+                  }
+                  _ownTweet[year].push(tweet);
+                });
+              }
+
+              let temp = {};
+
+              Object.keys(_ownTweet)
+                .sort((a, b) => {
+                  return b.split("_")[0] - a.split("_")[0];
+                })
+                .forEach(function (key) {
+                  temp[key] = _ownTweet[key];
+                });
+              _ownTweet = temp;
+
+              //
+
+              if (facebook) {
+                facebook.forEach((post) => {
+                  let year = post.createdAt.split("-")[0] + "_year";
+                  if (!_facebookPost[year]) {
+                    _facebookPost[year] = [];
+                  }
+                  _facebookPost[year].push(post);
+                });
+              }
+
+              temp = {};
+
+              Object.keys(_facebookPost)
+                .sort((a, b) => {
+                  return b.split("_")[0] - a.split("_")[0];
+                })
+                .forEach(function (key) {
+                  temp[key] = _facebookPost[key];
+                });
+              _facebookPost = temp;
+
+              if (instagram) {
+                instagram.forEach((post) => {
+                  let year = post.createdAt.split("-")[0] + "_year";
+                  if (!_instagramPost[year]) {
+                    _instagramPost[year] = [];
+                  }
+                  _instagramPost[year].push(post);
+                });
+              }
+
+              temp = {};
+
+              Object.keys(_instagramPost)
+                .sort((a, b) => {
+                  return b.split("_")[0] - a.split("_")[0];
+                })
+                .forEach(function (key) {
+                  temp[key] = _instagramPost[key];
+                });
+              _instagramPost = temp;
+              //
+              var l = 0;
+
+              const MAXLength = Math.max(
+                Object.keys(_ownVideo).length,
+                Object.keys(_facebookPost).length,
+                Object.keys(_ownTweet).length,
+                Object.keys(_instagramPost).length
+              );
+              function maxVideos(videos) {
+                const { _ownVideo, _facebookPost, _ownTweet } = videos;
+                if (MAXLength == Object.keys(_ownVideo).length) {
+                  return _ownVideo;
+                } else if (MAXLength == Object.keys(_facebookPost).length) {
+                  return _facebookPost;
+                } else if (MAXLength == Object.keys(_ownTweet).length) {
+                  return _ownTweet;
+                } else if (MAXLength == Object.keys(_instagramPost).length) {
+                  return _instagramPost;
+                } else {
+                  return _facebookPost;
+                }
+              }
+              const selectedVideos = maxVideos({
+                _ownVideo,
+                _facebookPost,
+                _ownTweet,
+                _instagramPost,
+              });
+              let tabcount = 0;
+              for (video in selectedVideos) {
+                l++;
+                $("#card").append(
+                  `<div class="card-header" id="${video}">
+                          <button
+                                class="btn btn-link collapsed"
+                                type="button"
+                                data-toggle="collapse"
+                                data-target="#collapse-${video}"
+                                aria-expanded="false"
+                                aria-controls="collapse-${video}"
+                              >
+                              ${video.split("_")[0]}
+                              </button></div>
+
+                              <div
+                              id="collapse-${video}"
+                              class="collapse"
+                              aria-labelledby="${video}"
+                              data-parent="#creatorAccordion"
+                            >
+
+                            </div>`
+                );
+
+                //
+                tabcount++;
+                _ownVideo[video].forEach((item, i) => {
+                  let collaborators = "";
+                  item.collaborators.forEach((coll) => {
+                    collaborators =
+                      collaborators +
+                      `<div class="col-md-6 mb-1">
+                                          <div class="shadow_box">
+                                            <div class="card-user">
+                                              <i
+                                                class="fas fa-user-circle fa-2x streamGrey"
+                                              ></i>
+                                              ${
+                                                coll.verified
+                                                  ? '<i class="fas fa-check-circle"></i>'
+                                                  : '<i class="fas fa-times-circle"></i>'
+                                              }
+
+
+                                            </div>
+                                            <div class="card-user-details">
+                                              <span class="name">${
+                                                coll.user
+                                              }</span>
+                                              <span class="role"
+                                                ><i class="fas fa-tags"></i>
+                                                ${coll.role}</span
+                                              >
+
+                                              ${
+                                                coll.verified
+                                                  ? `<span class="varification">Verified</span>`
+                                                  : `<span class="varification unverified">Unverified</span>`
+                                              }
+                                            </div>
+                                          </div>
+                                        </div>`;
+                  });
+                  $(`#collapse-${video}`).append(`
+                              <div id="cb-${
+                                item.videoId
+                              }" class="tab-${tabcount} card-body sh ">
+                                <div class="card-wrap">
+                                  <div class="row no-gutters">
+                                    <div class="col-md-4">
+                                      <div class="post_thumbnail">
+                                        <img
+                                          alt="image"
+                                          src="https://i.ytimg.com/vi/${
+                                            item.videoId
+                                          }/default.jpg"
+                                        />
+                                      </div>
+                                    </div>
+                                    <div class="col-md-8 pl-md-2">
+                                      <div class="post_info">
+                                        <h2 class="post_title" id="pt-${
+                                          item.videoId
+                                        }">
+                                          ${item.title}
+                                        </h2>
+                                        <div
+                                          class="d-flex justify-content-between social-p"
+                                        >
+                                          <div class="social-post">
+                                            <img
+                                              alt="image"
+                                              src="./img/youtube-icon.svg"
+                                            />
+                                            <span id="plateform">YouTube</span>
+                                          </div>
+                                          <span> ${new Date(item.createdAt)
+                                            .toString()
+                                            .slice(4, 15)} </span>
+                                        </div>
+                                      </div>
+                                      <div class="row no-gutters shadow_row mt-2">
+
+                                        ${collaborators}
+                                        <div class="col-md-2 d-none">
+                                          <div class="shadow_box">
+                                            <a href="#" class="see_more">See more</a>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                              </div>
+                            </div>
+                            `);
+                });
+
+                // for (tweet in _ownTweet) {
+
+                // _ownTweet.forEach((tweet) => {
+                l++;
+                _ownTweet[video] &&
+                  _ownTweet[video].forEach((item, i) => {
+                    const { media } = item;
+                    let thumbnail_url = null;
+                    if (media) {
+                      thumbnail_url = media[0].expanded_url;
+                    } else {
+                      thumbnail_url = "./img/no_media.png";
+                    }
+
+                    let collaborators = "";
+                    item.collaborators.forEach((coll) => {
+                      collaborators =
+                        collaborators +
+                        `<div class="col-md-6 mb-1">
+                                          <div class="shadow_box">
+                                            <div class="card-user">
+                                              <i
+                                                class="fas fa-user-circle fa-2x streamGrey"
+                                              ></i>
+                                              ${
+                                                coll.verified
+                                                  ? '<i class="fas fa-check-circle"></i>'
+                                                  : '<i class="fas fa-times-circle"></i>'
+                                              }
+
+
+                                            </div>
+                                            <div class="card-user-details">
+                                              <span class="name">${
+                                                coll.user
+                                              }</span>
+                                              <span class="role"
+                                                ><i class="fas fa-tags"></i>
+                                                ${coll.role}</span
+                                              >
+
+                                              ${
+                                                coll.verified
+                                                  ? `<span class="varification">Verified</span>`
+                                                  : `<span class="varification unverified">Unverified</span>`
+                                              }
+                                            </div>
+                                          </div>
+                                        </div>`;
+                    });
+                    $(`#collapse-${video}`).append(`
+                              <div id="cb-${
+                                item.id
+                              }" class="tab-${tabcount} card-body sh">
+                                <div class="card-wrap">
+                                  <div class="row no-gutters">
+                                    <div class="col-md-4">
+                                      <div class="post_thumbnail">
+                                        <img
+                                          alt="image"
+                                          src="${thumbnail_url}"
+                                        />
+                                      </div>
+                                    </div>
+                                    <div class="col-md-8 pl-md-2">
+                                      <div class="post_info">
+                                        <h2 class="post_title" id="pt-${
+                                          item.id
+                                        }">
+                                          ${item.text.split("https")[0]}
+                                        </h2>
+                                        <div
+                                          class="d-flex justify-content-between social-p"
+                                        >
+                                          <div class="social-post">
+                                            <img
+                                              alt="image"
+                                              src="./img/twitter-icon.svg"
+                                            />
+                                            <span id="plateform">twitter</span>
+                                          </div>
+                                          <span> ${new Date(item.createdAt)
+                                            .toString()
+                                            .slice(4, 15)} </span>
+                                        </div>
+                                      </div>
+                                      <div class="row no-gutters shadow_row mt-2">
+
+                                        ${collaborators}
+                                        <div class="col-md-2 d-none">
+                                          <div class="shadow_box">
+                                            <a href="#" class="see_more">See more</a>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                              </div>
+
+                            </div>
+                            `);
+                  });
+                // });
+
+                // render fB posts
+
+                // for (video in _facebookPost) {
+                // l++;
+                _facebookPost[video] &&
+                  _facebookPost[video].forEach((item, i) => {
+                    let collaborators = "";
+                    item.collaborators.forEach((coll) => {
+                      collaborators =
+                        collaborators +
+                        `<div class="col-md-6 mb-1">
+                                          <div class="shadow_box">
+                                            <div class="card-user">
+                                              <i
+                                                class="fas fa-user-circle fa-2x streamGrey"
+                                              ></i>
+                                              ${
+                                                coll.verified
+                                                  ? '<i class="fas fa-check-circle"></i>'
+                                                  : '<i class="fas fa-times-circle"></i>'
+                                              }
+
+
+                                            </div>
+                                            <div class="card-user-details">
+                                              <span class="name">${
+                                                coll.user
+                                              }</span>
+                                              <span class="role"
+                                                ><i class="fas fa-tags"></i>
+                                                ${coll.role}</span
+                                              >
+
+                                              ${
+                                                coll.verified
+                                                  ? `<span class="varification">Verified</span>`
+                                                  : `<span class="varification unverified">Unverified</span>`
+                                              }
+                                            </div>
+                                          </div>
+                                        </div>`;
+                    });
+                    $(`#collapse-${video}`).append(`
+                              <div id="cb-${
+                                item.post_id
+                              }" class="tab-${tabcount} card-body sh">
+                                <div class="card-wrap">
+                                  <div class="row no-gutters">
+                                    <div class="col-md-4">
+                                      <div class="post_thumbnail">
+                                        <img
+                                          alt="image"
+                                          src="https://i.ytimg.com/vi/${
+                                            item.post_id
+                                          }/default.jpg"
+                                        />
+                                      </div>
+                                    </div>
+                                    <div class="col-md-8 pl-md-2">
+                                      <div class="post_info">
+                                        <h2 class="post_title" id="pt-${
+                                          item.videoId
+                                        }">
+                                          ${item.message}
+                                        </h2>
+                                        <div
+                                          class="d-flex justify-content-between social-p"
+                                        >
+                                          <div class="social-post">
+                                            <img
+                                              class="social-icon"
+                                              alt="image"
+                                              src="./img/facebook-icon.svg"
+                                            />
+                                            <span id="plateform">Facebook</span>
+                                          </div>
+                                          <span> ${new Date(item.createdAt)
+                                            .toString()
+                                            .slice(4, 15)} </span>
+                                        </div>
+                                      </div>
+                                      <div class="row no-gutters shadow_row mt-2">
+
+                                        ${collaborators}
+                                        <div class="col-md-2 d-none">
+                                          <div class="shadow_box">
+                                            <a href="#" class="see_more">See more</a>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                              </div>
+
+                            </div>
+                            `);
+                  });
+                // }
+
+                // instagram code start here
+
+                _instagramPost[video] &&
+                  _instagramPost[video].forEach((item, i) => {
+                    let collaborators = "";
+                    item.collaborators.forEach((coll) => {
+                      collaborators =
+                        collaborators +
+                        `<div class="col-md-6 mb-1">
+                                          <div class="shadow_box">
+                                            <div class="card-user">
+                                              <i
+                                                class="fas fa-user-circle fa-2x streamGrey"
+                                              ></i>
+                                              ${
+                                                coll.verified
+                                                  ? '<i class="fas fa-check-circle"></i>'
+                                                  : '<i class="fas fa-times-circle"></i>'
+                                              }
+
+
+                                            </div>
+                                            <div class="card-user-details">
+                                              <span class="name">${
+                                                coll.user
+                                              }</span>
+                                              <span class="role"
+                                                ><i class="fas fa-tags"></i>
+                                                ${coll.role}</span
+                                              >
+
+                                              ${
+                                                coll.verified
+                                                  ? `<span class="varification">Verified</span>`
+                                                  : `<span class="varification unverified">Unverified</span>`
+                                              }
+                                            </div>
+                                          </div>
+                                        </div>`;
+                    });
+                    $(`#collapse-${video}`).append(`
+                              <div id="cb-${
+                                item.post_id
+                              }" class="tab-${tabcount} card-body sh">
+                                <div class="card-wrap">
+                                  <div class="row no-gutters">
+                                    <div class="col-md-4">
+                                      <div class="post_thumbnail">
+                                        <img
+                                          alt="image"
+                                          src="./img/instagram.svg"
+                                        />
+                                      </div>
+                                    </div>
+                                    <div class="col-md-8 pl-md-2">
+                                      <div class="post_info">
+                                        <h2 class="post_title" id="pt-${
+                                          item.post_id
+                                        }">
+                                        </h2>
+                                        <div
+                                          class="d-flex justify-content-between social-p"
+                                        >
+                                          <div class="social-post">
+                                            <img
+                                              class="social-icon"
+                                              alt="image"
+                                              src="./img/instagram.svg"
+                                            />
+                                            <span id="plateform">Instagram</span>
+                                          </div>
+                                          <span> ${new Date(item.createdAt)
+                                            .toString()
+                                            .slice(4, 15)} </span>
+                                        </div>
+                                      </div>
+                                      <div class="row no-gutters shadow_row mt-2">
+
+                                        ${collaborators}
+                                        <div class="col-md-2 d-none">
+                                          <div class="shadow_box">
+                                            <a href="#" class="see_more">See more</a>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                              </div>
+
+                            </div>
+                            `);
+                  });
+
+                // instagram code end here
+
+                $(`#collapse-${video}`).append(
+                  `<a href="#" class="loadmore_btn" value=${tabcount} id="loadMore_${tabcount}">Load More</a>`
+                );
+              }
+              for (i = 1; i <= tabcount; i++) {
+                $(".tab-" + i).hide();
+                $(".tab-" + i)
+                  .slice(0, 4)
+                  .show();
+                $("#loadMore_" + i).on("click", function (e) {
+                  e.preventDefault();
+                  $(".tab-" + 1 + ":hidden")
+                    .slice(0, 4)
+                    .slideDown();
+                  if ($(".tab-" + e.target.value + ":hidden").length === 0) {
+                    $("#loadMore_" + i).fadeOut("slow");
+                    $("#loadMore_" + i).hide();
+                  }
+                  $("html,body").animate(
+                    {
+                      scrollTop:
+                        $(this).offset().top - $(".card-body").offset().top,
+                    },
+                    1500
+                  );
+                });
+                if ($(".tab-" + i).length < 4) {
+                  $("#loadMore_" + i).hide();
+                }
+              }
+              $("#plateform-filter").on("change", function () {
+                var val = $(this).val().trim().toLowerCase();
+
+                var value = $("#filter-post").val().trim().toLowerCase();
+
+                $("#card .sh").filter(function () {
+                  $(this)
+                    .toggle(
+                      $(this)
+                        .find("#plateform")
+                        .text()
+                        .trim()
+                        .toLowerCase()
+                        .indexOf(val) > -1 &&
+                        $(this)
+                          .find(".post_title")
+                          .text()
+                          .trim()
+                          .toLowerCase()
+                          .indexOf(value) > -1
+                    )
+                    .slice(0, 3);
+                });
+              });
+
+              $("#filter-post").on("keyup", function () {
+                var value = $(this).val().trim().toLowerCase();
+
+                var val = $("#plateform-filter").val().trim().toLowerCase();
+                $("#card .sh").filter(function () {
+                  $(this).toggle(
+                    $(this)
+                      .find(".post_title")
+                      .text()
+                      .trim()
+                      .toLowerCase()
+                      .indexOf(value) > -1 &&
+                      $(this)
+                        .find("#plateform")
+                        .text()
+                        .trim()
+                        .toLowerCase()
+                        .indexOf(val) > -1
+                  );
+                });
+              });
+
+              $("#user_name").text(user.displayName);
+              $("#user_name_acc").text(user.displayName);
+              $("#user_name_handle").text(`@${user.displayName}`);
+              let _member_since = new Date(user.createdAt).toDateString();
+              // $("#member_since").text(
+              //   `User Since: ${user.memberSince.split("T")[0]}`
+              // );
+              $("#member_since").text(
+                `User Since: ${_member_since.substr(3, _member_since.length)}`
+              );
+
+              $("#user-about").text(user.about || "---");
+            } catch (error) {
+              console.log("something went wrong", error);
+            }
+          });
+      });
+    </script>
+  </body>
+</html>

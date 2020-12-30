@@ -1,0 +1,24 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP_HOST} ^(www\.)?streambedmedia\.com$ [NC]
+RewriteRule ^(.*)$ https://streambedmedia.com/$1 [L,R=301]
+</IfModule>
+Options -MultiViews
+
+RewriteEngine On
+#1 This line checks if the https is off
+RewriteCond %{HTTPS} ^off$
+#then, redirect to https
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [NC,L,R]
+#2 this line checks if the request is /file.html
+RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
+#then redirect /file.html to /file
+RewriteRule ^ /%1 [NC,L,R]
+
+#3 if the request is not for dir
+RewriteCond %{REQUEST_FILENAME} !-d
+#and the request is an existing filename
+RewriteCond %{REQUEST_FILENAME}.html -f
+#then rewrite /file to /file.html
+RewriteRule ^([^/]+)/?$ $1.html [NC,L]
