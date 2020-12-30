@@ -168,9 +168,6 @@ padding-bottom: 1.2em
   }
 }
 
-
-
-
 .streamCardHeader{
   color: #0E62AF;
   text-align: left;
@@ -306,8 +303,7 @@ opacity: 1;
   }
 
   footer.footer {
-    padding-left:5%;
-    padding-right: 5%;
+    padding: 8% 5%:
   }
 
  footer .col-md-5 {
@@ -332,6 +328,12 @@ opacity: 1;
 @media (min-width: 768px) {
   .showcase .showcase-text {
     padding: 7rem;
+  }
+}
+
+@media (min-width: 769px) {
+  footer .legal a:first-child {
+    margin-top: 20px;
   }
 }
 
@@ -435,6 +437,8 @@ opacity: 1;
   }
 }
 
+
+
 footer.footer {
   background: transparent linear-gradient(90deg, #7BC0DE 0%, var(--unnamed-color-0099cd) 100%) 0% 0% no-repeat padding-box;
   background: transparent linear-gradient(90deg, #7BC0DE 0%, #0099CD 100%) 0% 0% no-repeat padding-box;
@@ -455,9 +459,7 @@ footer .fab {
   width: 26px;
 }
 
-footer .col-md-2 {
-  margin-top: 27px;
-}
+
 
 .streamFooterList{
   font-size: 0.8em;
