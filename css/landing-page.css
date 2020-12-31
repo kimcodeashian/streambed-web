@@ -91,7 +91,16 @@ header.masthead h1 {
 }
 
 .navbar-brand img{
-  width: 214px;
+  width: 200px;
+}
+@media only screen and (max-width: 567px) {
+  .navbar-brand img{
+    width: 180px;
+  }
+
+  footer img {
+    width: 180px;
+  }  
 }
 
 .navbar{
@@ -267,10 +276,6 @@ opacity: 1;
     font-size: 0.9em;
   }
 
-  .streamCard{
-
-
-  }
   .streamDeck{
   display: inline-block;
   width: 80%;
@@ -303,7 +308,7 @@ opacity: 1;
   }
 
   footer.footer {
-    padding: 8% 5%:
+    padding: 8% 5% !important;
   }
 
  footer .col-md-5 {
@@ -446,6 +451,10 @@ footer.footer {
   padding: 5%;
   margin: auto;
   width: 95%;
+}
+
+footer img {
+  width: 200px;
 }
 
 footer .row {
